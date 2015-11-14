@@ -22,7 +22,7 @@ npm install --save react-emojione
 ## Run demo
 
 ```bash
-npm install react-emojione
+npm install --save react-emojione
 cd react-emojione
 npm install
 npm run dev-server
