@@ -10,7 +10,6 @@ import spriteStyle from './styles/emojione-sprite';
 const DEFAULT_OPTIONS = {
     convertShortnames: true,
     convertUnicode: true,
-    spriteUrl: '',
     cache: true,
     cacheSize: 2000,
 };
@@ -38,9 +37,9 @@ data.forEach(([codepoint, unicode, shortname]) => {
 
 const RE_SHORTNAMES_UNICODES = RegExp('(:\\w+:|' + unicodes.join('|') + ')');
 
-const Emoji = ({codepoint, style = {}}, handleClick) => (
+const Emoji = ({codepoint, style = {}, handleClick}) => (
     <span
-        className={`emojione-${codepoint}`}
+        onClick={handleClick}
         style={spriteStyle(codepoint, style)}
         title={codepointToShort.get(codepoint)}
     >
@@ -51,7 +50,6 @@ const Emoji = ({codepoint, style = {}}, handleClick) => (
 export const emojify = (str, options = {}, style = {}, handleClick) => {
     const {convertShortnames, convertUnicode} = Object.assign({}, DEFAULT_OPTIONS, options);
     const styleProp = Object.assign({}, DEFAULT_STYLE, style);
-
     return str.split(RE_SHORTNAMES_UNICODES).map((part, index) => {
         const key = `e-${index}`;
         if (convertShortnames && shortToCodepoint.has(part)) {
@@ -59,7 +57,7 @@ export const emojify = (str, options = {}, style = {}, handleClick) => {
                 <Emoji
                     codepoint={shortToCodepoint.get(part)}
                     key={key}
-                    onClick={handleClick}
+                    handleClick={handleClick}
                     style={styleProp}
                 />
             );
@@ -68,7 +66,7 @@ export const emojify = (str, options = {}, style = {}, handleClick) => {
                 <Emoji
                     codepoint={unicodeToCodepoint.get(part)}
                     key={key}
-                    onClick={handleClick}
+                    handleClick={handleClick}
                     style={styleProp}
                 />
             );

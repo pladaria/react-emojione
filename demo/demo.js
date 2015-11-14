@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import shortnames from 'emoji-shortnames';
-import {emojify} from '../src/react-emojione';
+import {emojify} from '../index';
 import 'babel-es6-polyfill/polyfill';
 
 const PlayGround = React.createClass({
@@ -43,12 +43,15 @@ const PlayGround = React.createClass({
 });
 
 const EmojiCategory = React.createClass({
+    handleClick(event) {
+        alert(event.target.title);
+    },
     render() {
         return (
             <div>
                 <h1>{this.props.title}</h1>
                 <div>
-                    {emojify(this.props.text)}
+                    {emojify(this.props.text, {}, {}, this.handleClick)}
                 </div>
             </div>
         );
