@@ -4,19 +4,29 @@ A tiny ES6 library to use emojis in React
 
 ## Features
 
-- 😀 Converts :shortnames: and unicode (no ASCII smileys, for now)
-- 😃 Copy-paste friendly
-- 😁 Use it as a library or mixin
-- 😂 No dangerouslySetInnerHTML
-- 😄 Inline styles
-- 😅 Sprite mode (the only supported mode for now)
-- 😆 Configurable styles and options
-- 😎 Fast!
+- Converts :shortnames: and unicode (no ASCII smileys, for now)
+- Copy-paste friendly
+- Use it as a library or mixin
+- No dangerouslySetInnerHTML
+- Inline styles
+- Sprite mode (the only supported mode for now)
+- Configurable styles and options
+- Fast!
 
 ## Install
 
 ```javascript
 npm install --save react-emojione
+```
+
+## Run demo
+
+```bash
+npm install react-emojione
+cd react-emojione
+npm install
+npm run dev-server
+# open http://localhost:8080/
 ```
 
 ## Basic usage
@@ -46,7 +56,7 @@ const styles = {
     backgroundImage: 'url(emojione.sprites.png)',
     width: '32px',
     height: '32px',
-    margin: '4px
+    margin: '4px'
 };
 
 // this click handler will be set on every emoji
