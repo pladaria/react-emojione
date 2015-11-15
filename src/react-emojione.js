@@ -4,20 +4,16 @@
  * MIT Licensed
  */
 import React from 'react';
-import data from '../data/emoji-data';
-import spriteStyle from './styles/emojione-sprite';
+import data from './data/emoji-data';
+import styles from './styles/emojione-sprite';
 
 const DEFAULT_OPTIONS = {
     convertShortnames: true,
-    convertUnicode: true,
-    cache: true,
-    cacheSize: 2000,
+    convertUnicode: true
 };
 
 const DEFAULT_STYLE = {
-    backgroundImage: 'url("emojione.sprites.png")',
-    width: '32px',
-    height: '32px'
+    backgroundImage: 'url("emojione.sprites.png")'
 };
 
 const unicodes = [];
@@ -40,7 +36,7 @@ const RE_SHORTNAMES_UNICODES = RegExp('(:\\w+:|' + unicodes.join('|') + ')');
 const Emoji = ({codepoint, style = {}, handleClick}) => (
     <span
         onClick={handleClick}
-        style={spriteStyle(codepoint, style)}
+        style={styles.sprite(codepoint, style)}
         title={codepointToShort.get(codepoint)}
     >
         {codepointToUnicode.get(codepoint)}
@@ -48,15 +44,16 @@ const Emoji = ({codepoint, style = {}, handleClick}) => (
 );
 
 export const emojify = (str, options = {}, style = {}, handleClick) => {
+
     const {convertShortnames, convertUnicode} = Object.assign({}, DEFAULT_OPTIONS, options);
     const styleProp = Object.assign({}, DEFAULT_STYLE, style);
+
     return str.split(RE_SHORTNAMES_UNICODES).map((part, index) => {
-        const key = `e-${index}`;
         if (convertShortnames && shortToCodepoint.has(part)) {
             return (
                 <Emoji
                     codepoint={shortToCodepoint.get(part)}
-                    key={key}
+                    key={`s-${index}`}
                     handleClick={handleClick}
                     style={styleProp}
                 />
@@ -65,7 +62,7 @@ export const emojify = (str, options = {}, style = {}, handleClick) => {
             return (
                 <Emoji
                     codepoint={unicodeToCodepoint.get(part)}
-                    key={key}
+                    key={`u-${index}`}
                     handleClick={handleClick}
                     style={styleProp}
                 />

@@ -24,8 +24,8 @@ const REGEXP = /\.emojione-([\w-]+)\s*{\s*background-position:\s*([\d.%\s]+);/g;
 const css = fs.readFileSync(__dirname + FILENAME).toString().replace(/\n/g, '');
 
 const positions = [];
-let match;
 
+let match;
 while (match = REGEXP.exec(css)) positions.push([match[1], match[2]]);
 
 const str = positions.map(p => `'${p[0]}':'${p[1]}'`).join(',\n');
