@@ -1,6 +1,6 @@
 {
   "name": "react-emojione",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A tiny ES6 library to use emojis in React",
   "main": "index.js",
   "dependencies": {},
@@ -19,7 +19,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "scripts": {
-    "create-emoji-data": "./scripts/create-emoji-data.js > data/emoji-data.js",
+    "create-emoji-data": "./scripts/create-emoji-data.js > src/data/emoji-data.js",
     "create-styles": "./scripts/create-styles.js > src/styles/emojione-sprite-positions.js",
     "dev-server": "webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
