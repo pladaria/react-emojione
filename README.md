@@ -22,8 +22,10 @@ npm install --save react-emojione
 ## Run demo
 
 ```bash
+# clone repo and then
 npm install
-npm run dev-server # open http://localhost:8080/
+npm run dev-server
+# open http://localhost:8080/
 ```
 
 ## Basic usage

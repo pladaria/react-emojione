@@ -1,10 +1,9 @@
 {
   "name": "react-emojione",
-  "version": "0.1.1",
-  "description": "",
+  "version": "0.1.2",
+  "description": "A tiny ES6 library to use emojis in React",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "emoji-shortnames": "^1.0.1",
     "emojione": "1.5.2",
@@ -22,9 +21,25 @@
   "scripts": {
     "create-emoji-data": "./scripts/create-emoji-data.js > data/emoji-data.js",
     "create-styles": "./scripts/create-styles.js > src/styles/emojione-sprite-positions.js",
-    "dev-server": "node_modules/.bin/webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
+    "dev-server": "webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pladaria/react-emojione.git"
+  },
+  "keywords": [
+    "react",
+    "emoji",
+    "emojione",
+    "emojify",
+    "unicode",
+    "smileys"
+  ],
+  "bugs": {
+    "url": "https://github.com/pladaria/react-emojione/issues"
+  },
+  "homepage": "https://github.com/pladaria/react-emojione#readme"
 }
