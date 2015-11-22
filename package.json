@@ -1,6 +1,6 @@
 {
   "name": "react-emojione",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tiny ES6 library to use emojis in React",
   "main": "index.js",
   "dependencies": {
