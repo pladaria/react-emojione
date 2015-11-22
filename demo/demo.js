@@ -1,8 +1,8 @@
+import 'babel-es6-polyfill/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import shortnames from 'emoji-shortnames';
 import {emojify} from '../index';
-import 'babel-es6-polyfill/polyfill';
 
 const Playground = React.createClass({
 
@@ -16,7 +16,9 @@ const Playground = React.createClass({
 
     getInitialState() {
         return {
-            input: 'Hello world! 😍😎😏:smile_cat::family:'
+            input: 'Hello world! 😍😎😏:smile_cat::family:\n' +
+                   ':) :P ;P :d T____T \':( -_- -__-u\n' +
+                   'xD X\'D </3 <3 <\\3 :( >:( >:(('
         }
     },
 
@@ -28,7 +30,7 @@ const Playground = React.createClass({
         return (
             <div style={this.styles.container}>
                 <div style={this.styles.left}>
-                    <strong>Write here text, emojis or :shortcodes:</strong>
+                    <strong>Write here text, ascii smileys, emojis or :shortcodes:</strong>
                     <textarea
                         onChange={this.handleChange}
                         style={this.styles.textarea}
@@ -48,15 +50,14 @@ const Playground = React.createClass({
 
 const EmojiCategory = React.createClass({
 
-    emojiStyle: {
-        width: '2em',
-        height: '2em',
-        cursor: 'pointer',
-        margin: '0.1em'
-    },
-
-    handleClick(event) {
-        alert(event.target.title);
+    emojiOptions: {
+        style: {
+            width: '2em',
+            height: '2em',
+            cursor: 'pointer',
+            margin: '0.1em'
+        },
+        handleClick: event => alert(event.target.title)
     },
 
     render() {
@@ -64,7 +65,7 @@ const EmojiCategory = React.createClass({
             <div>
                 <h1>{this.props.title}</h1>
                 <div>
-                    {emojify(this.props.text, {}, this.emojiStyle, this.handleClick)}
+                    {emojify(this.props.text, this.emojiOptions, this.handleClick)}
                 </div>
             </div>
         );

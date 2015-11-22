@@ -1,14 +1,15 @@
 {
   "name": "react-emojione",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "A tiny ES6 library to use emojis in React",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2"
+  },
   "devDependencies": {
     "emoji-shortnames": "^1.0.1",
     "emojione": "1.5.2",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
     "babel-core": "^6.1.2",
     "babel-es6-polyfill": "^1.0.1",
     "babel-loader": "^6.0.1",

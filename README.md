@@ -4,7 +4,7 @@ A tiny ES6 library to use emojis in React
 
 ## Features
 
-- Converts :shortnames: and unicode (no ASCII smileys, for now)
+- Converts :shortnames:, unicode and ASCII smileys
 - Copy-paste friendly
 - Use it as a library or mixin
 - No dangerouslySetInnerHTML
@@ -35,7 +35,7 @@ import {emojify} from 'react-emojione';
 
 ReactDOM.render(
     <div>
-        {emojify('Easy! :wink: 😸')}
+        {emojify('Easy! :wink: 😸 :D  ^__^')}
     </div>,
     document.body
 );
@@ -48,22 +48,21 @@ import {emojify} from 'react-emojione';
 
 const options = {
     convertShortnames: true,
-    convertUnicode: true
+    convertUnicode: true,
+    convertAscii: true,
+    styles: {
+        backgroundImage: 'url(emojione.sprites.png)',
+        width: '32px',
+        height: '32px',
+        margin: '4px'
+    },
+    // this click handler will be set on every emoji
+    handleClick: event => alert(event.target.title)
 };
-
-const styles = {
-    backgroundImage: 'url(emojione.sprites.png)',
-    width: '32px',
-    height: '32px',
-    margin: '4px'
-};
-
-// this click handler will be set on every emoji
-const handleClick = event => alert(event.target.title);
 
 ReactDOM.render(
     <div>
-        {emojify('Easy! :wink: 😸'), options, styles, handleClick}
+        {emojify('Easy! :wink: 😸 :D  ^__^'), options}
     </div>,
     document.body
 );
