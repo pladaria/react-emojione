@@ -62,7 +62,7 @@ const options = {
 
 ReactDOM.render(
     <div>
-        {emojify('Easy! :wink: 😸 :D  ^__^'), options}
+        {emojify('Easy! :wink: 😸 :D  ^__^', options)}
     </div>,
     document.body
 );
