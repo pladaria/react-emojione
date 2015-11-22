@@ -38,7 +38,7 @@ ASCII_DATA.forEach(([regExpStr, unicode]) => asciiRegExpToUnicode.set(RegExp(reg
 
 const asciiRegexStr = ASCII_DATA.map(([reStr, unicode]) => reStr).join('|');
 
-const convertAsciiToUnicode = text => {
+const convertAsciiToUnicodeOrNull = text => {
     if (!text) {
         return '';
     }
@@ -52,7 +52,7 @@ const convertAsciiToUnicode = text => {
             return unicode;
         }
     }
-    return str;
+    return null;
 };
 
 const RE_SHORTNAMES_UNICODES = RegExp('(:\\w+:|' + unicodes.join('|') + ')');
@@ -68,39 +68,45 @@ const Emoji = ({codepoint, customStyles = {}, handleClick}) => (
     </span>
 );
 
-export const emojify = (str, options = {}, handleClick) => {
-    const opt = Object.assign({}, DEFAULT_OPTIONS, options);
-    const re = opt.convertAscii ? RE_SHORTNAMES_UNICODES_ASCII : RE_SHORTNAMES_UNICODES;
-    return str.split(re).map((part, index) => {
-        if (opt.convertAscii) {
-            const unicode = convertAsciiToUnicode(part);
-            if (unicodeToCodepoint.has(unicode)) {
+export const emojify = (str, options = {}) => {
+
+    const mergedOptions = Object.assign({}, DEFAULT_OPTIONS, options);
+
+    const {convertShortnames, convertUnicode, convertAscii} = mergedOptions;
+    const {styles, handleClick} = mergedOptions;
+
+    const regExp = convertAscii ? RE_SHORTNAMES_UNICODES_ASCII : RE_SHORTNAMES_UNICODES;
+
+    return str.split(regExp).map((part, index) => {
+        if (convertAscii) {
+            const unicode = convertAsciiToUnicodeOrNull(part);
+            if (unicode) {
                 return (
                     <Emoji
                         codepoint={unicodeToCodepoint.get(unicode)}
-                        customStyles={opt.styles}
-                        handleClick={opt.handleClick}
+                        customStyles={styles}
+                        handleClick={handleClick}
                         key={`a-${index}`}
                     />
                 );
             }
         }
-        if (opt.convertShortnames && shortToCodepoint.has(part)) {
+        if (convertShortnames && shortToCodepoint.has(part)) {
             return (
                 <Emoji
                     codepoint={shortToCodepoint.get(part)}
-                    customStyles={opt.styles}
-                    handleClick={opt.handleClick}
+                    customStyles={styles}
+                    handleClick={handleClick}
                     key={`s-${index}`}
                 />
             );
         }
-        if (opt.convertUnicode && unicodeToCodepoint.has(part)) {
+        if (convertUnicode && unicodeToCodepoint.has(part)) {
             return (
                 <Emoji
                     codepoint={unicodeToCodepoint.get(part)}
-                    customStyles={opt.styles}
-                    handleClick={opt.handleClick}
+                    customStyles={styles}
+                    handleClick={handleClick}
                     key={`u-${index}`}
                 />
             );

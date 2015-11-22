@@ -17,8 +17,10 @@ const Playground = React.createClass({
     getInitialState() {
         return {
             input: 'Hello world! 😍😎😏:smile_cat::family:\n' +
-                   ':) :P ;P :d T____T \':( -_- -__-u\n' +
-                   'xD X\'D </3 <3 <\\3 :( >:( >:(('
+                   ":) :P ;P :d T____T ':( -_- -__-u\n" +
+                   "xD X'D </3 <3 <\\3 :( >:(\n" +
+                   "':[ :, ':| >:[\n" +
+                   "¬¬ :, ':| -____-u :poop: :alien:"
         }
     },
 
