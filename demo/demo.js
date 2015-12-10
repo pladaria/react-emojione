@@ -53,11 +53,12 @@ const Playground = React.createClass({
 const EmojiCategory = React.createClass({
 
     emojiOptions: {
-        style: {
-            width: '2em',
-            height: '2em',
+        styles: {
+            width: '32px',
+            height: '32px',
             cursor: 'pointer',
-            margin: '0.1em'
+            margin: '0.1em',
+            backgroundImage: 'url(emojione.sprites.png)'
         },
         handleClick: event => alert(event.target.title)
     },
