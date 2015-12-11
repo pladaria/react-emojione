@@ -51,7 +51,7 @@ rules:
   no-alert: 0
   no-array-constructor: 2
   no-caller: 2
-  no-catch-shadow: 0 # this is only relevant for IE8
+  no-catch-shadow: 0
   no-class-assign: 2
   no-cond-assign: 2
   no-const-assign: 2
@@ -128,7 +128,7 @@ rules:
   wrap-iife: [2, inside]
   wrap-regex: 2
   yoda: 0
-  react/display-name: [1, {acceptTranspilerName: true}] # @TODO RICO-3187 set to 2
+  react/display-name: 0
   react/forbid-prop-types: [2, {forbid: [any]}]
   react/jsx-boolean-value: 1
   react/jsx-closing-bracket-location: 1
@@ -136,17 +136,17 @@ rules:
   react/jsx-indent-props: 1
   react/jsx-max-props-per-line: 0
   react/jsx-no-duplicate-props: 1
-  react/jsx-no-literals: 0 # Seems buggy
+  react/jsx-no-literals: 0
   react/jsx-no-undef: 1
   react/jsx-sort-prop-types: 1
   react/jsx-sort-props: 1
   react/jsx-uses-react: 1
   react/jsx-uses-vars: 1
   react/no-danger: 1
-  react/no-did-mount-set-state: 0 # useful to animate after rendering
+  react/no-did-mount-set-state: 0
   react/no-did-update-set-state: 1
   react/no-direct-mutation-state: 1
-  react/no-multi-comp: 1
+  react/no-multi-comp: 0
   react/no-set-state: 0
   react/no-unknown-property: 1
   react/prop-types: 1

@@ -33,12 +33,10 @@
     "create-styles": "./scripts/create-styles.js > src/styles/emojione-sprite-positions.js",
     "dev-server": "webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
     "clean": "rimraf lib",
-    "build": "babel src --out-dir lib",
-    "preversion": "npm run clean && npm run check",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run clean",
+    "build": "npm run lint && babel src --out-dir lib",
     "prepublish": "npm run clean && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src"
   },
   "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
   "license": "MIT",
