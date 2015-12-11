@@ -9,10 +9,10 @@ const Playground = React.createClass({
     getInitialState() {
         return {
             input: 'Hello world! 😍😎😏:smile_cat::family:\n'
-                   + ":) :P ;P :d T____T ':( -_- -__-u\n"
-                   + "xD X'D </3 <3 <\\3 :( >:(\n"
-                   + "':[ :, ':| >:[\n"
-                   + "¬¬ :, ':| -____-u :poop: :alien:"
+                + ":) :P ;P :d T____T ':( -_- -__-u\n"
+                + "xD X'D </3 <3 <\\3 :( >:(\n"
+                + "':[ :, ':| >:[\n"
+                + "¬¬ :, ':| -____-u :poop: :alien:"
         };
     },
 
@@ -68,7 +68,7 @@ const EmojiCategory = React.createClass({
             <div>
                 <h1>{this.props.title}</h1>
                 <div>
-                    {emojify(this.props.text, this.emojiOptions, this.handleClick)}
+                    {emojify(this.props.text, this.emojiOptions)}
                 </div>
             </div>
         );
