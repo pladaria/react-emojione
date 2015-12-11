@@ -62,10 +62,20 @@ const options = {
 
 ReactDOM.render(
     <div>
-        {emojify('Easy! :wink: 😸 :D  ^__^', options)}
+        {emojify('Easy! :wink: 😸 :D ^__^', options)}
     </div>,
     document.body
 );
+```
+
+### Output
+
+You can also render to unicode (instead of virtualdom) using the `output` option
+```javascript
+import {emojify} from 'react-emojione';
+
+emojify('Easy! :wink: :D ^__^', {output: 'unicode'});
+// Easy! 😉 😃 😄
 ```
 
 ## License
