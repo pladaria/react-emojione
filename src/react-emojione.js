@@ -59,7 +59,7 @@ export const emojify = (str, options = {}) => {
 
     const renderCodepoint = getRenderer(mergedOptions);
 
-    return str.split(regExp).map((part, index) => {
+    const convertedParts = str.split(regExp).map((part, index) => {
         if (convertAscii) {
             const unicode = convertAsciiToUnicodeOrNull(part);
             if (unicode) {
@@ -74,6 +74,8 @@ export const emojify = (str, options = {}) => {
         }
         return part;
     });
+
+    return mergedOptions.output === 'unicode' ? convertedParts.join('') : convertedParts;
 };
 
 export default {
