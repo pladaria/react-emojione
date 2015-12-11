@@ -129,7 +129,7 @@ rules:
   wrap-regex: 2
   yoda: 0
   react/display-name: 0
-  react/forbid-prop-types: [2, {forbid: [any]}]
+  react/forbid-prop-types: 0
   react/jsx-boolean-value: 1
   react/jsx-closing-bracket-location: 1
   react/jsx-curly-spacing: 1
@@ -149,7 +149,7 @@ rules:
   react/no-multi-comp: 0
   react/no-set-state: 0
   react/no-unknown-property: 1
-  react/prop-types: 1
+  react/prop-types: 0
   react/react-in-jsx-scope: 1
   react/require-extension: 1
   react/self-closing-comp: 1

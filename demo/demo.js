@@ -6,26 +6,26 @@ import {emojify} from '../index';
 
 const Playground = React.createClass({
 
+    getInitialState() {
+        return {
+            input: 'Hello world! 😍😎😏:smile_cat::family:\n'
+                   + ":) :P ;P :d T____T ':( -_- -__-u\n"
+                   + "xD X'D </3 <3 <\\3 :( >:(\n"
+                   + "':[ :, ':| >:[\n"
+                   + "¬¬ :, ':| -____-u :poop: :alien:"
+        };
+    },
+
+    handleChange(event) {
+        this.setState({input: event.target.value});
+    },
+
     styles: {
         container: {display: 'flex'},
         left: {minWidth: '400px', marginRight: '16px'},
         textarea: {width: '100%', boxSizing: 'border-box', minHeight: '100px', marginTop: '10px'},
         right: {minWidth: '400px'},
         result: {whiteSpace: 'pre-wrap', marginTop: '10px'}
-    },
-
-    getInitialState() {
-        return {
-            input: 'Hello world! 😍😎😏:smile_cat::family:\n' +
-                   ":) :P ;P :d T____T ':( -_- -__-u\n" +
-                   "xD X'D </3 <3 <\\3 :( >:(\n" +
-                   "':[ :, ':| >:[\n" +
-                   "¬¬ :, ':| -____-u :poop: :alien:"
-        }
-    },
-
-    handleChange(event) {
-        this.setState({input: event.target.value})
     },
 
     render() {
@@ -78,8 +78,8 @@ const EmojiCategory = React.createClass({
 const categories = Object.keys(shortnames).map((category, i) =>
     <EmojiCategory
         key={i}
-        title={category}
         text={shortnames[category].join('')}
+        title={category}
     />
 );
 
