@@ -1,4 +1,4 @@
-import positions from './emojione-sprite-positions'
+import positions from './emojione-sprite-positions';
 
 const defaults = codepoint => ({
     textIndent: '-9999em',

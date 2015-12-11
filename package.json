@@ -16,6 +16,8 @@
     "babel-preset-react": "^6.1.2",
     "emoji-shortnames": "^1.0.1",
     "emojione": "1.5.2",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.11.3",
     "jsx-loader": "^0.13.2",
     "rimraf": "^2.4.4",
     "webpack": "^1.12.3",
