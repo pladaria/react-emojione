@@ -45,5 +45,19 @@ test('ascii to unicode', t => {
         t.end();
     });
 
+    t.test('xD', t => {
+        const result = emojify('xD', {output: 'unicode'});
+        const expected = '😆';
+        t.equals(result, expected, result);
+        t.end();
+    });
+
+    t.test('xDD', t => {
+        const result = emojify('xDD', {output: 'unicode'});
+        const expected = '😂';
+        t.equals(result, expected, result);
+        t.end();
+    });
+
 });
 
