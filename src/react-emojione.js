@@ -1,6 +1,6 @@
 /*!
  * react-emojione
- * Copyright(c) 2015 Pedro Ladaria
+ * Copyright(c) 2016 Pedro Ladaria
  * MIT Licensed
  */
 import ASCII_DATA from './data/ascii-to-unicode';
@@ -25,7 +25,7 @@ const DEFAULT_OPTIONS = {
 const asciiToUnicodeCache = new Map();
 const asciiRegExpToUnicode = new Map();
 
-ASCII_DATA.forEach(([regExpStr, unicode]) => asciiRegExpToUnicode.set(RegExp(regExpStr), unicode));
+ASCII_DATA.forEach(([reStr, unicode]) => asciiRegExpToUnicode.set(RegExp(reStr), unicode));
 
 const asciiRegexStr = ASCII_DATA.map(([reStr, ]) => reStr).join('|');
 
@@ -37,7 +37,7 @@ const convertAsciiToUnicodeOrNull = text => {
     if (asciiToUnicodeCache.has(str)) {
         return asciiToUnicodeCache.get(str);
     }
-    for (let [regExp, unicode] of asciiRegExpToUnicode.entries()) {
+    for (const [regExp, unicode] of asciiRegExpToUnicode.entries()) {
         if (str.replace(regExp, unicode) === unicode) {
             asciiToUnicodeCache.set(str, unicode);
             return unicode;
@@ -49,6 +49,22 @@ const convertAsciiToUnicodeOrNull = text => {
 const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodes.join('|')})`);
 const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodes.join('|')}|${asciiRegexStr})`);
 
+const startsWithSpace = str => (/^\s/).test(str);
+const endsWithSpace = str => (/\s$/).test(str);
+
+const shouldConvertAscii = (parts, index) => {
+    if (parts.length === 1) {
+        return true;
+    }
+    if (index === 0) {
+        return startsWithSpace(parts[index + 1]);
+    }
+    if (index === parts.length - 1) {
+        return endsWithSpace(parts[index - 1]);
+    }
+    return endsWithSpace(parts[index - 1]) && startsWithSpace(parts[index + 1]);
+};
+
 export const emojify = (str, options = {}) => {
 
     const mergedOptions = Object.assign({}, DEFAULT_OPTIONS, options);
@@ -59,8 +75,8 @@ export const emojify = (str, options = {}) => {
 
     const renderCodepoint = getRenderer(mergedOptions);
 
-    const convertedParts = str.split(regExp).map((part, index) => {
-        if (convertAscii) {
+    const convertedParts = str.split(regExp).filter(Boolean).map((part, index, parts) => {
+        if (convertAscii && shouldConvertAscii(parts, index)) {
             const unicode = convertAsciiToUnicodeOrNull(part);
             if (unicode) {
                 return renderCodepoint(unicodeToCodepoint.get(unicode), `a-${index}`);
