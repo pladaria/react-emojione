@@ -3,9 +3,10 @@
   "version": "1.2.2",
   "description": "A tiny ES6 library to use emojis in React",
   "main": "lib/react-emojione.js",
-  "dependencies": {
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2"
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
