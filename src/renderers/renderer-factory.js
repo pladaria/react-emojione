@@ -7,6 +7,7 @@ const rendererForOutputFormat = {
 };
 
 const getRenderer = (config) => {
+	console.log(config);
     const renderer = rendererForOutputFormat[config.output] || rendererForOutputFormat.emoji;
     return renderer(config);
 };
