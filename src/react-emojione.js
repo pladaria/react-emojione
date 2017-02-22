@@ -45,9 +45,14 @@ const convertAsciiToUnicodeOrNull = text => {
     }
     return null;
 };
+// Some new icons required escape for regex 
+RegExp.escape = function(str) { 
+    return str.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1'); 
+};
 
-const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodes.join('|')})`);
-const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodes.join('|')}|${asciiRegexStr})`);
+const unicodeRegex = RegExp.escape(unicodes.join('|')).replace(/\\\|/g, "|");
+const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodeRegex})`);
+const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodeRegex}|${asciiRegexStr})`);
 
 const startsWithSpace = str => (/^\s/).test(str);
 const endsWithSpace = str => (/\s$/).test(str);
@@ -66,9 +71,9 @@ const shouldConvertAscii = (parts, index) => {
 };
 
 export const emojify = (str, options = {}) => {
-
+    
     const mergedOptions = Object.assign({}, DEFAULT_OPTIONS, options);
-
+    
     const {convertShortnames, convertUnicode, convertAscii} = mergedOptions;
 
     const regExp = convertAscii ? RE_SHORTNAMES_UNICODES_ASCII : RE_SHORTNAMES_UNICODES;
