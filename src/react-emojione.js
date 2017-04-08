@@ -15,7 +15,7 @@ const DEFAULT_OPTIONS = {
     convertUnicode: true,
     convertAscii: true,
     style: {
-        backgroundImage: 'url(emojione.sprites.png)'
+        backgroundImage: 'url(https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/sprites/emojione.sprites.png)'
     },
     onClick: undefined,
     output: 'emoji' // valid options: 'emoji', 'unicode'
@@ -112,7 +112,9 @@ class Emojify extends React.Component {
             return React.cloneElement(
                 node,
                 node.props,
-                React.Children.toArray(node.props.children).map(n => this.emojifyNode(n, options))
+                React.Children
+                    .toArray(node.props.children)
+                    .map(n => this.emojifyNode(n, options))
             );
         }
         return node;
@@ -120,7 +122,22 @@ class Emojify extends React.Component {
 
     render() {
         const options = this.props;
-        return this.emojifyNode(React.Children.only(this.props.children), options);
+        const node = this.props.children;
+        const count = React.Children.count(node);
+        if (count === 0) {
+            return null;
+        }
+        if (count > 1) {
+            return (
+                <div>{this.emojifyNode(node, options)}</div>
+            );
+        }
+        if (typeof node === 'string') {
+            return (
+                <span>{emojify(node, options)}</span>
+            );
+        }
+        return this.emojifyNode(React.Children.only(node), options);
     }
 }
 

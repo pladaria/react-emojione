@@ -1,4 +1,7 @@
 const test = require('tape');
+const React = require('react');
+const ReactDOMServer = require('react-dom/server');
+const Emojify = require('..').default;
 const emojify = require('..').emojify;
 
 test('ascii to unicode', t => {
@@ -75,3 +78,54 @@ test('ascii to unicode', t => {
 
 });
 
+test('component', t => {
+
+    const stripStyle = s =>
+        s.replace(/\sstyle=".*?;"/g, '');
+
+    t.test('no children', t => {
+        const el = React.createElement(Emojify, {});
+        const result = ReactDOMServer.renderToStaticMarkup(el);
+        const expected = '';
+        t.equals(result, expected);
+        t.end();
+    });
+
+    t.test('single child', t => {
+        const child = React.createElement('div', {}, ':D');
+        const el = React.createElement(Emojify, {}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<div><span title=":smiley:">😃</span></div>';
+        t.equals(result, expected);
+        t.end();
+    });
+
+    t.test('many children', t => {
+        const child1 = React.createElement('span', {key: 1}, ':D');
+        const child2 = React.createElement('span', {key: 2}, ':P');
+        const el = React.createElement(Emojify, {}, child1, child2);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<div><span><span title=":smiley:">😃</span></span><span><span title=":stuck_out_tongue:">😛</span></span></div>';
+        t.equals(result, expected);
+        t.end();
+    });
+
+    t.test('single string child', t => {
+        const child = ':D';
+        const el = React.createElement(Emojify, {}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<span><span title=":smiley:">😃</span></span>';
+        t.equals(result, expected);
+        t.end();
+    });
+
+    t.test('array child', t => {
+        const child = [':D', ':P'];
+        const el = React.createElement(Emojify, {}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<div><span title=":smiley:">😃</span><span title=":stuck_out_tongue:">😛</span></div>';
+        t.equals(result, expected);
+        t.end();
+    });
+
+});
