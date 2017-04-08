@@ -55,10 +55,8 @@ import Emojify from 'react-emojione';
 
 ReactDOM.render(
     <Emojify>
-        <div>
-            <span>Easy! :wink:</span>
-            <span>😸 :D  ^__^</span>
-        </div>
+        <span>Easy! :wink:</span>
+        <span>😸 :D  ^__^</span>
     </Emojify>,
     document.body
 );
@@ -99,16 +97,16 @@ import Emojify from 'react-emojione';
 
 ReactDOM.render(
     <Emojify style={{height: 32, width: 32}} onClick={e => alert(e.target.title)}>
-        <div>
-            <span>Easy! :wink:</span>
-            <span>😸 :D  ^__^</span>
-        </div>
+        <span>Easy! :wink:</span>
+        <span>😸 :D  ^__^</span>
     </Emojify>,
     document.body
 );
 ```
-
-Note that the component expects a single child
+Some notes about the `<Emojify>` component:
+- If it has multiple children, they will be wrapped with a `<div>`
+- If it has a single child, it won't be wrapped
+- If the single child is a `string`, it will be wrapped with a `<span>`
 
 ## Output
 
