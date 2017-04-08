@@ -31,7 +31,9 @@ export const sprite = (codepoint, style = {}) => {
     const [left, top] = positions[codepoint];
 
     result.backgroundPosition = `${left * scale}px ${top * scale}px`;
-    result.backgroundSize = SPRITE_SIZE * scale;
+
+    const bgSize = SPRITE_SIZE * scale;
+    result.backgroundSize = `${bgSize}px ${bgSize}px`;
 
     return result;
 };
