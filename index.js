@@ -1,1 +1,1 @@
-module.exports = require('./src/react-emojione');
+module.exports = require('./lib/react-emojione');

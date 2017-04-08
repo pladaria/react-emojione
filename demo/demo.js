@@ -2,7 +2,7 @@ import 'babel-es6-polyfill/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import shortnames from 'emoji-shortnames';
-import {emojify} from '../index';
+import {emojify} from '../src/react-emojione';
 
 const styles = {
     container: {display: 'flex'},
@@ -61,7 +61,6 @@ class EmojiCategory extends React.Component {
                 height: '32px',
                 cursor: 'pointer',
                 margin: '0.1em',
-                backgroundImage: 'url(emojione.sprites.png)'
             },
             handleClick: event => alert(event.target.title)
         };
