@@ -1,0 +1,139 @@
+---
+extends:
+  - eslint:recommended
+  - plugin:import/recommended
+plugins:
+  - react
+  - import
+env:
+  es6: true
+  browser: true
+  node: true
+parserOptions:
+  sourceType: module
+  ecmaFeatures:
+    jsx: true
+rules:
+  import/unambiguous: off
+  arrow-parens: off
+  arrow-spacing: error
+  brace-style: [error, 1tbs, {allowSingleLine: true}]
+  comma-dangle: off
+  comma-spacing: error
+  comma-style: [error, last]
+  consistent-return: error
+  constructor-super: error
+  curly: [error, multi-line]
+  default-case: error
+  dot-notation: error
+  eol-last: error
+  eqeqeq: error
+  indent: [error, 4, {SwitchCase: 1}]
+  jsx-quotes: [error, prefer-double]
+  linebreak-style: [error, unix]
+  key-spacing: [error, {beforeColon: false, afterColon: true}]
+  new-parens: error
+  new-cap: [error, {newIsCap: true, capIsNew: false}]
+  no-alert: off
+  no-array-constructor: error
+  no-caller: error
+  no-catch-shadow: off
+  no-class-assign: error
+  no-cond-assign: error
+  no-const-assign: error
+  no-console: error
+  no-constant-condition: 1
+  no-continue: error
+  no-debugger: error
+  no-delete-var: error
+  no-dupe-args: error
+  no-dupe-keys: error
+  no-duplicate-case: error
+  no-empty: error
+  no-eval: error
+  no-extend-native: error
+  no-extra-bind: error
+  no-extra-boolean-cast: error
+  no-extra-semi: error
+  no-fallthrough: error
+  no-floating-decimal: error
+  no-implied-eval: error
+  no-inner-declarations: [error, both]
+  no-invalid-regexp: error
+  no-irregular-whitespace: error
+  no-iterator: error
+  no-labels: error
+  no-lone-blocks: error
+  no-lonely-if: error
+  no-loop-func: error
+  no-mixed-spaces-and-tabs: error
+  no-multi-spaces: error
+  no-native-reassign: error
+  no-negated-in-lhs: error
+  no-new: error
+  no-new-func: error
+  no-new-object: error
+  no-new-wrappers: error
+  no-obj-calls: error
+  no-octal: error
+  no-proto: error
+  no-redeclare: error
+  no-return-assign: error
+  no-shadow: off
+  no-shadow-restricted-names: error
+  no-spaced-func: error
+  no-sparse-arrays: error
+  no-this-before-super: error
+  no-trailing-spaces: error
+  no-undef: error
+  no-undef-init: error
+  no-underscore-dangle: error
+  no-unreachable: error
+  no-unused-expressions: error
+  no-unused-vars: [error, {vars: all, args: after-used}]
+  no-use-before-define: error
+  no-var: error
+  no-with: error
+  operator-linebreak: [error, before]
+  prefer-const: 1
+  prefer-spread: 1
+  prefer-arrow-callback: 1
+  prefer-template: 1
+  quotes: [error, single, avoid-escape]
+  semi: [error, always]
+  semi-spacing: error
+  keyword-spacing: error
+  space-before-function-paren: [error, {anonymous: always, named: never}]
+  space-in-parens: [error, never]
+  space-infix-ops: [error, {int32Hint: true}]
+  space-unary-ops: error
+  strict: [error, global]
+  use-isnan: error
+  valid-typeof: error
+  wrap-iife: [error, inside]
+  wrap-regex: error
+  yoda: off
+  react/display-name: off
+  react/forbid-prop-types: off
+  react/jsx-boolean-value: 1
+  react/jsx-closing-bracket-location: 1
+  react/jsx-curly-spacing: 1
+  react/jsx-indent-props: 1
+  react/jsx-max-props-per-line: off
+  react/jsx-no-duplicate-props: 1
+  react/jsx-no-literals: off
+  react/jsx-no-undef: 1
+  react/jsx-uses-react: 1
+  react/jsx-uses-vars: 1
+  react/no-danger: 1
+  react/no-did-mount-set-state: off
+  react/no-did-update-set-state: 1
+  react/no-direct-mutation-state: 1
+  react/no-multi-comp: off
+  react/no-set-state: off
+  react/no-unknown-property: 1
+  react/prop-types: off
+  react/react-in-jsx-scope: 1
+  react/self-closing-comp: 1
+  react/sort-comp: 1
+...

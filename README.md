@@ -19,11 +19,12 @@ A tiny ES6 library to use emojis in React
 npm install --save react-emojione
 ```
 
-## Run demo
+## Development / Run demo
 
 ```bash
 # clone repo and then
-npm install
+yarn
+yarn add --peer react react-dom
 npm run dev-server
 # open http://localhost:8080/
 ```

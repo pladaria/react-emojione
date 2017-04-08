@@ -1,13 +1,15 @@
+const {join} = require('path');
+
 module.exports = {
 
-    context: __dirname + "/",
+    context: __dirname,
 
-    entry: "./demo/demo.js",
+    entry: './demo/demo.js',
 
     output: {
-        path: __dirname + "/assets/",
-        publicPath: "/assets/",
-        filename: "./bundle.js"
+        path: join(__dirname, '/assets/'),
+        publicPath: '/assets/',
+        filename: './bundle.js',
     },
 
     module: {
@@ -15,10 +17,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel",
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                loader: 'babel-loader',
             }
         ]
     }

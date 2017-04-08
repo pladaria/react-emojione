@@ -19,7 +19,3 @@ const defaults = codepoint => ({
 });
 
 export const sprite = (codepoint, style = {}) => Object.assign({}, defaults(codepoint), style);
-
-export default {
-    sprite
-};
