@@ -2,9 +2,9 @@ import 'babel-es6-polyfill/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import shortnames from 'emoji-shortnames';
-import {emojify} from '../src/react-emojione';
+import Emojify, {emojify} from '../src/react-emojione';
 
-const styles = {
+const style = {
     container: {display: 'flex'},
     left: {flexGrow: 1, marginRight: '16px'},
     textarea: {width: '100%', boxSizing: 'border-box', minHeight: '100px', marginTop: '10px'},
@@ -31,18 +31,18 @@ class Playground extends React.Component {
 
     render() {
         return (
-            <div style={styles.container}>
-                <div style={styles.left}>
+            <div style={style.container}>
+                <div style={style.left}>
                     <strong>Write here text, ascii smileys, emojis or :shortcodes:</strong>
                     <textarea
                         onChange={this.handleChange}
-                        style={styles.textarea}
+                        style={style.textarea}
                         value={this.state.input}
                     />
                 </div>
-                <div style={styles.right}>
+                <div style={style.right}>
                     <strong>Result</strong>
-                    <div style={styles.result}>
+                    <div style={style.result}>
                         {emojify(this.state.input)}
                     </div>
                 </div>
@@ -51,39 +51,13 @@ class Playground extends React.Component {
     }
 }
 
-class EmojiCategory extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.emojiOptions = {
-            styles: {
-                width: '32px',
-                height: '32px',
-                cursor: 'pointer',
-                margin: '0.1em',
-            },
-            handleClick: event => alert(event.target.title)
-        };
-    }
-
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
-                <div>
-                    {emojify(this.props.text, this.emojiOptions)}
-                </div>
-            </div>
-        );
-    }
-}
-
 const categories = Object.keys(shortnames).map((category, i) =>
-    <EmojiCategory
-        key={i}
-        text={shortnames[category].join('')}
-        title={category}
-    />
+    <Emojify key={i} style={{height: 32, cursor: 'pointer'}} onClick={n => alert(n.target.title)}>
+        <div>
+            <h1>{category}</h1>
+            {shortnames[category]}
+        </div>
+    </Emojify>
 );
 
 document.addEventListener('DOMContentLoaded', () => {

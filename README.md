@@ -5,10 +5,11 @@ A tiny ES6 library to use emojis in React
 ## Features
 
 - Dependency free!
+- Can be used as function or component
 - Converts :shortnames:, unicode and ASCII smileys
 - Copy-paste friendly
 - Sprite mode (the only supported mode for now)
-- Configurable styles and options
+- Configurable styleand options
 - Fast!
 
 ## Install
@@ -30,7 +31,7 @@ yarn
 yarn start
 ```
 
-## Basic usage
+## Basic usage (function)
 
 ```javascript
 import {emojify} from 'react-emojione';
@@ -43,7 +44,23 @@ ReactDOM.render(
 );
 ```
 
-## Advanced
+## Basic usage (component)
+
+```javascript
+import Emojify from 'react-emojione';
+
+ReactDOM.render(
+    <Emojify>
+        <div>
+            <span>Easy! :wink:</span>
+            <span>😸 :D  ^__^</span>
+        </div>
+    </Emojify>,
+    document.body
+);
+```
+
+## Advanced usage (function)
 
 ```javascript
 import {emojify} from 'react-emojione';
@@ -52,14 +69,13 @@ const options = {
     convertShortnames: true,
     convertUnicode: true,
     convertAscii: true,
-    styles: {
-        backgroundImage: 'url(emojione.sprites.png)',
-        width: '32px',
-        height: '32px',
-        margin: '4px'
+    style: {
+        backgroundImage: 'url("/path/to/your/emojione.sprites.png")',
+        height: 32,
+        margin: 4,
     },
     // this click handler will be set on every emoji
-    handleClick: event => alert(event.target.title)
+    onClick: event => alert(event.target.title)
 };
 
 ReactDOM.render(
@@ -70,9 +86,29 @@ ReactDOM.render(
 );
 ```
 
-### Output
+## Advanced usage (component)
 
-You can also render to unicode (instead of virtualdom) using the `output` option
+Simply pass options as props
+
+```javascript
+import Emojify from 'react-emojione';
+
+ReactDOM.render(
+    <Emojify style={{height: 32, width: 32}} onClick={e => alert(e.target.title)}>
+        <div>
+            <span>Easy! :wink:</span>
+            <span>😸 :D  ^__^</span>
+        </div>
+    </Emojify>,
+    document.body
+);
+```
+
+Note that the component expects a single child
+
+## Output
+
+You can also render to unicode (instead of react elements) using the `output` option
 ```javascript
 import {emojify} from 'react-emojione';
 

@@ -2,21 +2,21 @@ import React from 'react';
 import {sprite} from '../styles/emojione-sprite';
 import {codepointToShort, codepointToUnicode} from '../utils/emoji-format-conversion';
 
-const Emoji = ({codepoint, customStyles = {}, handleClick}) => (
+const Emoji = ({codepoint, style = {}, onClick}) => (
     <span
-        onClick={handleClick}
-        style={sprite(codepoint, customStyles)}
+        onClick={onClick}
+        style={sprite(codepoint, style)}
         title={codepointToShort.get(codepoint)}
     >
         {codepointToUnicode.get(codepoint)}
     </span>
 );
 
-const getRenderer = ({styles, handleClick}) => (codepoint, key) => (
+const getRenderer = ({style, onClick}) => (codepoint, key) => (
     <Emoji
         codepoint={codepoint}
-        customStyles={styles}
-        handleClick={handleClick}
+        style={style}
+        onClick={onClick}
         key={key}
     />
 );

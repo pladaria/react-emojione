@@ -1,28 +1,23 @@
 /*!
  * react-emojione
- * Copyright(c) 2016 Pedro Ladaria
+ * Copyright(c) 2017 Pedro Ladaria
  * MIT Licensed
  *
- * This library uses Emojione
- * http://emojione.com/mallorca-
- *
+ * Emoji provided free by http://emojione.com
  */
+import React from 'react';
 import ASCII_DATA from './data/ascii-to-unicode';
 import getRenderer from './renderers/renderer-factory';
-import {
-    unicodes,
-    shortToCodepoint,
-    unicodeToCodepoint,
-} from './utils/emoji-format-conversion';
+import {unicodes, shortToCodepoint, unicodeToCodepoint} from './utils/emoji-format-conversion';
 
 const DEFAULT_OPTIONS = {
     convertShortnames: true,
     convertUnicode: true,
     convertAscii: true,
-    styles: {
+    style: {
         backgroundImage: 'url(emojione.sprites.png)'
     },
-    handleClick: undefined,
+    onClick: undefined,
     output: 'emoji' // valid options: 'emoji', 'unicode'
 };
 
@@ -104,6 +99,29 @@ export const emojify = (str, options = {}) => {
     return mergedOptions.output === 'unicode' ? convertedParts.join('') : convertedParts;
 };
 
-export default {
-    emojify
-};
+class Emojify extends React.Component {
+
+    emojifyNode(node, options) {
+        if (typeof node === 'string') {
+            return emojify(node, options);
+        }
+        if (Array.isArray(node)) {
+            return node.map(n => this.emojifyNode(n, options));
+        }
+        if (React.isValidElement(node)) {
+            return React.cloneElement(
+                node,
+                node.props,
+                React.Children.toArray(node.props.children).map(n => this.emojifyNode(n, options))
+            );
+        }
+        return node;
+    }
+
+    render() {
+        const options = this.props;
+        return this.emojifyNode(React.Children.only(this.props.children), options);
+    }
+}
+
+export default Emojify;
