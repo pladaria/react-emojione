@@ -4,11 +4,9 @@ A tiny ES6 library to use emojis in React
 
 ## Features
 
+- Dependency free!
 - Converts :shortnames:, unicode and ASCII smileys
 - Copy-paste friendly
-- Use it as a library or mixin
-- No dangerouslySetInnerHTML
-- Inline styles
 - Sprite mode (the only supported mode for now)
 - Configurable styles and options
 - Fast!
@@ -22,11 +20,14 @@ npm install --save react-emojione
 ## Development / Run demo
 
 ```bash
-# clone repo and then
+# clone repo
+git clone ...
+
+# get dependencies
 yarn
-yarn add --peer react react-dom
+
+# start dev-server
 yarn start
-# open http://localhost:8080/
 ```
 
 ## Basic usage

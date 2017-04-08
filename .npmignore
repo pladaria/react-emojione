@@ -2,3 +2,6 @@ src
 scripts
 demo
 npm-debug.log
+webpack.config.js
+yarn.lock
+test
