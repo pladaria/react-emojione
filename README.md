@@ -25,7 +25,7 @@ npm install --save react-emojione
 # clone repo and then
 yarn
 yarn add --peer react react-dom
-npm run dev-server
+yarn start
 # open http://localhost:8080/
 ```
 

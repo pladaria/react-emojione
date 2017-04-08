@@ -2,6 +2,10 @@
  * react-emojione
  * Copyright(c) 2016 Pedro Ladaria
  * MIT Licensed
+ *
+ * This library uses Emojione
+ * http://emojione.com/mallorca-
+ *
  */
 import ASCII_DATA from './data/ascii-to-unicode';
 import getRenderer from './renderers/renderer-factory';
@@ -27,6 +31,12 @@ const asciiRegExpToUnicode = new Map();
 
 ASCII_DATA.forEach(([reStr, unicode]) => asciiRegExpToUnicode.set(RegExp(reStr), unicode));
 
+// Escape RegExp code borrowed from lodash
+const reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+const reHasRegExpChar = RegExp(reRegExpChar.source);
+const escapeRegExp = s =>
+    (s && reHasRegExpChar.test(s)) ? s.replace(reRegExpChar, '\\$&') : s;
+
 const asciiRegexStr = ASCII_DATA.map(([reStr, ]) => reStr).join('|');
 
 const convertAsciiToUnicodeOrNull = text => {
@@ -46,8 +56,8 @@ const convertAsciiToUnicodeOrNull = text => {
     return null;
 };
 
-const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodes.join('|')})`);
-const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodes.join('|')}|${asciiRegexStr})`);
+const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodes.map(escapeRegExp).join('|')})`);
+const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodes.map(escapeRegExp).join('|')}|${asciiRegexStr})`);
 
 const startsWithSpace = str => (/^\s/).test(str);
 const endsWithSpace = str => (/\s$/).test(str);

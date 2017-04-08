@@ -1266,9 +1266,9 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
-emoji-shortnames@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/emoji-shortnames/-/emoji-shortnames-1.0.1.tgz#360d818f1573f5541ee787a5f1e2bd641669ba1a"
+emoji-shortnames@^2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/emoji-shortnames/-/emoji-shortnames-2.2.7.tgz#d599fa9af12095cfef87f1ad78ba1976eab241b2"
 
 emojione@^2.2.7:
   version "2.2.7"
