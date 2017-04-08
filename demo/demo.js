@@ -4,64 +4,68 @@ import ReactDOM from 'react-dom';
 import shortnames from 'emoji-shortnames';
 import {emojify} from '../index';
 
-const Playground = React.createClass({
+const styles = {
+    container: {display: 'flex'},
+    left: {flexGrow: 1, marginRight: '16px'},
+    textarea: {width: '100%', boxSizing: 'border-box', minHeight: '100px', marginTop: '10px'},
+    right: {flexGrow: 1, background: '#eee'},
+    result: {whiteSpace: 'pre-wrap', marginTop: '10px'}
+};
 
-    getInitialState() {
-        return {
+class Playground extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
             input: 'Hello world! 😍😎😏:smile_cat::family:\n'
                 + ":) :P ;P :d T____T ':( -_- -__-u\n"
                 + "xD X'D </3 <3 <\\3 :( >:(\n"
                 + "':[ :, ':| >:[\n"
-                + "¬¬ :, ':| -____-u :poop: :alien:"
+                + "¬¬ :, ':| -____-u :unicorn: :poop: :alien:"
         };
-    },
+    }
 
     handleChange(event) {
         this.setState({input: event.target.value});
-    },
-
-    styles: {
-        container: {display: 'flex'},
-        left: {minWidth: '400px', marginRight: '16px'},
-        textarea: {width: '100%', boxSizing: 'border-box', minHeight: '100px', marginTop: '10px'},
-        right: {minWidth: '400px'},
-        result: {whiteSpace: 'pre-wrap', marginTop: '10px'}
-    },
+    }
 
     render() {
         return (
-            <div style={this.styles.container}>
-                <div style={this.styles.left}>
+            <div style={styles.container}>
+                <div style={styles.left}>
                     <strong>Write here text, ascii smileys, emojis or :shortcodes:</strong>
                     <textarea
                         onChange={this.handleChange}
-                        style={this.styles.textarea}
+                        style={styles.textarea}
                         value={this.state.input}
                     />
                 </div>
-                <div style={this.styles.right}>
+                <div style={styles.right}>
                     <strong>Result</strong>
-                    <div style={this.styles.result}>
+                    <div style={styles.result}>
                         {emojify(this.state.input)}
                     </div>
                 </div>
             </div>
         );
     }
-});
+}
 
-const EmojiCategory = React.createClass({
+class EmojiCategory extends React.Component {
 
-    emojiOptions: {
-        styles: {
-            width: '32px',
-            height: '32px',
-            cursor: 'pointer',
-            margin: '0.1em',
-            backgroundImage: 'url(emojione.sprites.png)'
-        },
-        handleClick: event => alert(event.target.title)
-    },
+    constructor(props){
+        super(props);
+        this.emojiOptions = {
+            styles: {
+                width: '32px',
+                height: '32px',
+                cursor: 'pointer',
+                margin: '0.1em',
+                backgroundImage: 'url(emojione.sprites.png)'
+            },
+            handleClick: event => alert(event.target.title)
+        };
+    }
 
     render() {
         return (
@@ -73,7 +77,7 @@ const EmojiCategory = React.createClass({
             </div>
         );
     }
-});
+}
 
 const categories = Object.keys(shortnames).map((category, i) =>
     <EmojiCategory

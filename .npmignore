@@ -5,3 +5,4 @@ npm-debug.log
 webpack.config.js
 yarn.lock
 test
+.yarnclean
