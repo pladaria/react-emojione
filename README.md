@@ -16,6 +16,10 @@
 - Configurable styles and options
 - Easy!
 
+## Demo
+
+[Live demo](https://runkit.com/pladaria/react-emojione)
+
 ## Install
 
 ```javascript
