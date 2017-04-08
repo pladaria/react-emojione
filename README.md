@@ -1,16 +1,18 @@
-# react-emojione
-
-A tiny ES6 library to use emojis in React
+<p align="center">
+    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f419.svg" width=250 />
+    <h1 align="center">react-emojione</h1>
+    <p align="center">A tiny library to use emojis in React</p>
+</p>
 
 ## Features
 
 - Dependency free!
-- Can be used as function or component
+- Can be used as function: `emojify()` or component: `<Emojify>`
 - Converts :shortnames:, unicode and ASCII smileys
 - Copy-paste friendly
 - Sprite mode (the only supported mode for now)
-- Configurable styleand options
-- Fast!
+- Configurable styles and options
+- Easy!
 
 ## Install
 
@@ -119,3 +121,6 @@ emojify('Easy! :wink: :D ^__^', {output: 'unicode'});
 ## License
 
 MIT
+
+---
+Emoji provided free by [http://emojione.com](http://emojione.com)
