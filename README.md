@@ -1,6 +1,7 @@
 <p align="center">
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f984.svg" width=210 />
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f419.svg" width=210 />
+    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f638.svg" width=210 />
+    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f602.svg" width=210 />
+    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f40a.svg" width=210 />
     <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f916.svg" width=210 />
     <h1 align="center">react-emojione</h1>
     <p align="center">A tiny library to use emojis in React</p>
