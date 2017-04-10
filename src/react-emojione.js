@@ -61,13 +61,13 @@ const getRegex = (withUnicode, withAscii, withShortnames) => {
     if (!REGEX_CACHE[index]) {
         const parts = [
             withShortnames ? shortnamesRegexStr : '',
-            withUnicode? unicodesRegexStr : '',
+            withUnicode ? unicodesRegexStr : '',
             withAscii ? asciiRegexStr : '',
         ].filter(Boolean);
         REGEX_CACHE[index] = RegExp(`(${parts.join('|')})`);
     }
     return REGEX_CACHE[index];
-}
+};
 
 const startsWithSpace = str => (/^\s/).test(str);
 const endsWithSpace = str => (/\s$/).test(str);
