@@ -60,5 +60,8 @@
   "bugs": {
     "url": "https://github.com/pladaria/react-emojione/issues"
   },
-  "homepage": "https://github.com/pladaria/react-emojione#readme"
+  "homepage": "https://github.com/pladaria/react-emojione#readme",
+  "publishConfig": {
+      "registry": "https://registry.npmjs.org"
+    }
 }
