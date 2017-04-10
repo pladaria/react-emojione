@@ -6,3 +6,4 @@ webpack.config.js
 yarn.lock
 test
 .yarnclean
+yarn-error.log

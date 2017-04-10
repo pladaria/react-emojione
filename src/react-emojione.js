@@ -32,7 +32,6 @@ const reHasRegExpChar = RegExp(reRegExpChar.source);
 const escapeRegExp = s =>
     (s && reHasRegExpChar.test(s)) ? s.replace(reRegExpChar, '\\$&') : s;
 
-const asciiRegexStr = ASCII_DATA.map(([reStr, ]) => reStr).join('|');
 
 const convertAsciiToUnicodeOrNull = text => {
     if (!text) {
@@ -51,8 +50,24 @@ const convertAsciiToUnicodeOrNull = text => {
     return null;
 };
 
-const RE_SHORTNAMES_UNICODES = RegExp(`(:\\w+:|${unicodes.map(escapeRegExp).join('|')})`);
-const RE_SHORTNAMES_UNICODES_ASCII = RegExp(`(:\\w+:|${unicodes.map(escapeRegExp).join('|')}|${asciiRegexStr})`);
+const asciiRegexStr = ASCII_DATA.map(([reStr, ]) => reStr).join('|');
+const unicodesRegexStr = unicodes.map(escapeRegExp).join('|');
+const shortnamesRegexStr = ':\\w+:';
+
+const REGEX_CACHE = [];
+
+const getRegex = (withUnicode, withAscii, withShortnames) => {
+    const index = (withUnicode ? 1 : 0) + (withAscii ? 2 : 0) + (withShortnames ? 4 : 0);
+    if (!REGEX_CACHE[index]) {
+        const parts = [
+            withShortnames ? shortnamesRegexStr : '',
+            withUnicode? unicodesRegexStr : '',
+            withAscii ? asciiRegexStr : '',
+        ].filter(Boolean);
+        REGEX_CACHE[index] = RegExp(`(${parts.join('|')})`);
+    }
+    return REGEX_CACHE[index];
+}
 
 const startsWithSpace = str => (/^\s/).test(str);
 const endsWithSpace = str => (/\s$/).test(str);
@@ -76,7 +91,7 @@ export const emojify = (str, options = {}) => {
 
     const {convertShortnames, convertUnicode, convertAscii} = mergedOptions;
 
-    const regExp = convertAscii ? RE_SHORTNAMES_UNICODES_ASCII : RE_SHORTNAMES_UNICODES;
+    const regExp = getRegex(convertUnicode, convertAscii, convertShortnames);
 
     const renderCodepoint = getRenderer(mergedOptions);
 
