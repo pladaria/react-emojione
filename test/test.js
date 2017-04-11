@@ -128,4 +128,13 @@ test('component', t => {
         t.end();
     });
 
+    t.test('array child (single element)', t => {
+        const child = [':D'];
+        const el = React.createElement(Emojify, {}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<div><span title=":smiley:">😃</span></div>';
+        t.equals(result, expected);
+        t.end();
+    });
+
 });

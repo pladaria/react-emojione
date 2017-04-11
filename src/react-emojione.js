@@ -138,6 +138,9 @@ class Emojify extends React.Component {
     render() {
         const options = this.props;
         const node = this.props.children;
+        if (Array.isArray(node)) {
+            return <div>{this.emojifyNode(node, options)}</div>;
+        }
         const count = React.Children.count(node);
         if (count === 0) {
             return null;
