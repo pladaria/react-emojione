@@ -137,4 +137,22 @@ test('component', t => {
         t.end();
     });
 
+    t.test('ignore shortnames', t => {
+        const child = ':smile:';
+        const el = React.createElement(Emojify, {convertShortnames: false}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<span>:smile:</span>';
+        t.equals(result, expected);
+        t.end();
+    });
+
+    t.test('ignore ascii', t => {
+        const child = ':D';
+        const el = React.createElement(Emojify, {convertAscii: false}, child);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<span>:D</span>';
+        t.equals(result, expected);
+        t.end();
+    });
+
 });
