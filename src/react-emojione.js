@@ -139,7 +139,7 @@ class Emojify extends React.Component {
         const options = this.props;
         const node = this.props.children;
         if (Array.isArray(node)) {
-            return <div>{this.emojifyNode(node, options)}</div>;
+            return <span>{this.emojifyNode(node, options)}</span>;
         }
         const count = React.Children.count(node);
         if (count === 0) {
@@ -147,7 +147,7 @@ class Emojify extends React.Component {
         }
         if (count > 1) {
             return (
-                <div>{this.emojifyNode(node, options)}</div>
+                <span>{this.emojifyNode(node, options)}</span>
             );
         }
         if (typeof node === 'string') {

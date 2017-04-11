@@ -109,9 +109,8 @@ ReactDOM.render(
 );
 ```
 Some notes about the `<Emojify>` component:
-- If it has multiple children, they will be wrapped with a `<div>`
 - If it has a single child, it won't be wrapped
-- If the single child is a `string`, it will be wrapped with a `<span>`
+- Otherwise it will be wrapped with a `<span>`
 
 ## Output
 

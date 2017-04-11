@@ -105,7 +105,7 @@ test('component', t => {
         const child2 = React.createElement('span', {key: 2}, ':P');
         const el = React.createElement(Emojify, {}, child1, child2);
         const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
-        const expected = '<div><span><span title=":smiley:">😃</span></span><span><span title=":stuck_out_tongue:">😛</span></span></div>';
+        const expected = '<span><span><span title=":smiley:">😃</span></span><span><span title=":stuck_out_tongue:">😛</span></span></span>';
         t.equals(result, expected);
         t.end();
     });
@@ -123,7 +123,7 @@ test('component', t => {
         const child = [':D', ':P'];
         const el = React.createElement(Emojify, {}, child);
         const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
-        const expected = '<div><span title=":smiley:">😃</span><span title=":stuck_out_tongue:">😛</span></div>';
+        const expected = '<span><span title=":smiley:">😃</span><span title=":stuck_out_tongue:">😛</span></span>';
         t.equals(result, expected);
         t.end();
     });
@@ -132,7 +132,7 @@ test('component', t => {
         const child = [':D'];
         const el = React.createElement(Emojify, {}, child);
         const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
-        const expected = '<div><span title=":smiley:">😃</span></div>';
+        const expected = '<span><span title=":smiley:">😃</span></span>';
         t.equals(result, expected);
         t.end();
     });
