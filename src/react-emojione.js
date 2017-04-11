@@ -152,7 +152,7 @@ class Emojify extends React.Component {
                 <span>{emojify(node, options)}</span>
             );
         }
-        return this.emojifyNode(React.Children.only(node), options);
+        return this.emojifyNode(node, options);
     }
 }
 
