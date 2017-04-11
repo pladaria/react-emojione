@@ -1,6 +1,6 @@
 {
   "name": "react-emojione",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "A tiny library to use emojis in React",
   "main": "index.js",
   "dependencies": {},
@@ -62,6 +62,6 @@
   },
   "homepage": "https://github.com/pladaria/react-emojione#readme",
   "publishConfig": {
-      "registry": "https://registry.npmjs.org"
-    }
+    "registry": "https://registry.npmjs.org"
+  }
 }
