@@ -118,8 +118,8 @@ class Emojify extends React.Component {
 
     traverse(children, options) {
         return React.Children.map(children, child => {
-            if (React.isValidElement()) {
-                return React.cloneElement(child, {}, ...this.traverse(child.props.children, options));
+            if (React.isValidElement(child)) {
+                return React.cloneElement(child, {}, this.traverse(child.props.children, options));
             }
             if (typeof child === 'string') {
                 return emojify(child, options);

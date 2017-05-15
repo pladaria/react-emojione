@@ -155,4 +155,15 @@ test('component', t => {
         t.end();
     });
 
+    t.test('nested children', t => {
+        const child1 = React.createElement('span', {key: 1}, ':P');
+        const child2 = React.createElement('span', {key: 2}, ':D');
+        const child3 = React.createElement('span', {key: 3}, child1, child2, [child1, child2]);
+        const el = React.createElement(Emojify, {}, child3);
+        const result = stripStyle(ReactDOMServer.renderToStaticMarkup(el));
+        const expected = '<span><span><span><span title=":stuck_out_tongue:">😛</span></span><span><span title=":smiley:">😃</span></span><span><span title=":stuck_out_tongue:">😛</span></span><span><span title=":smiley:">😃</span></span></span></span>';
+        t.equals(result, expected);
+        t.end();
+    });
+
 });
