@@ -117,7 +117,7 @@ export const emojify = (str, options = {}) => {
 class Emojify extends React.Component {
 
     traverse(children, options) {
-        return React.children.map(children, child => {
+        return React.Children.map(children, child => {
             if (React.isValidElement()) {
                 return React.cloneElement(child, {}, ...this.traverse(child.props.children, options));
             }
