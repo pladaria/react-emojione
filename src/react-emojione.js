@@ -116,46 +116,23 @@ export const emojify = (str, options = {}) => {
 
 class Emojify extends React.Component {
 
-    emojifyNode(node, options) {
-        if (typeof node === 'string') {
-            return emojify(node, options);
-        }
-        if (Array.isArray(node)) {
-            return node.map(n => this.emojifyNode(n, options));
-        }
-        if (React.isValidElement(node)) {
-            return React.cloneElement(
-                node,
-                node.props,
-                React.Children
-                    .toArray(node.props.children)
-                    .map(n => this.emojifyNode(n, options))
-            );
-        }
-        return node;
+    traverse(children, options) {
+        return React.children.map(children, child => {
+            if (React.isValidElement()) {
+                return React.cloneElement(child, {}, ...this.traverse(child.props.children, options));
+            }
+            if (typeof child === 'string') {
+                return emojify(child, options);
+            }
+            return child;
+        });
     }
 
     render() {
-        const options = this.props;
-        const node = this.props.children;
-        if (Array.isArray(node)) {
-            return <span>{this.emojifyNode(node, options)}</span>;
-        }
-        const count = React.Children.count(node);
-        if (count === 0) {
-            return null;
-        }
-        if (count > 1) {
-            return (
-                <span>{this.emojifyNode(node, options)}</span>
-            );
-        }
-        if (typeof node === 'string') {
-            return (
-                <span>{emojify(node, options)}</span>
-            );
-        }
-        return this.emojifyNode(node, options);
+        const children = this.props.children;
+        return React.Children.count(children)
+            ? React.createElement('span', {}, this.traverse(children, this.props))
+            : null;
     }
 }
 
