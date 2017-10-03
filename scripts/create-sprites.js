@@ -57,7 +57,7 @@ const createSprite = ({size, src, out, padding}) => {
         for (let i = 0; i < EMOJIS_PER_ROW && e < count; i++, e++, x += size + padding) {
             const name = shortnames[e];
             const code = emojiDataMap.get(name);
-            //console.log('x:', x, 'y:', y, '\temoji:', e, '/', count, '\tcode:', code, 'name:', name);
+            console.log('x:', x, 'y:', y, '\temoji:', e, '/', count, '\tcode:', code, 'name:', name);
             const img = readEmoji(src, code);
             if (img) {
                 ctx.drawImage(img, x, y, size, size);
