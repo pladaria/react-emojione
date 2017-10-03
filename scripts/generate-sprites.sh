@@ -9,7 +9,7 @@ rm -f *
 node ../../scripts/create-sprites.js
 
 # optimize with pngquant
-pngquant --force --speed 1 --nofs --strip --verbose *
+pngquant --force --speed 1 --nofs --verbose *
 
 # view results
 ls -la

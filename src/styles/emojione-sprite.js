@@ -28,7 +28,7 @@ export const sprite = (codepoint, style = {}) => {
     result.width = size;
 
     const scale = size / EMOJI_SIZE;
-    const [left, top] = positions[codepoint];
+    const [left, top] = positions[codepoint] || [];
 
     result.backgroundPosition = `${left * scale}px ${top * scale}px`;
 
