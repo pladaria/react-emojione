@@ -7,7 +7,7 @@ const emojiDataArray = require('../src/data/emoji-data');
 const emojiShortnames = require('emoji-shortnames');
 
 const EMOJIS_PER_ROW = 64;
-const EMOJIONE_VERSION = '3.2.2';
+const EMOJIONE_VERSION = '3.1.2';
 
 const sets = [
     {
