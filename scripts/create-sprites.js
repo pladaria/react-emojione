@@ -7,29 +7,30 @@ const emojiDataArray = require('../src/data/emoji-data');
 const emojiShortnames = require('emoji-shortnames');
 
 const EMOJIS_PER_ROW = 64;
+const EMOJIONE_VERSION = '3.2.2';
 
 const sets = [
     {
         size: 32,
         padding: 1,
-        src: join(__dirname, '../assets/emojione-3.0-32x32'),
-        out: join(__dirname, '../assets/sprites/emojione-3.0-32x32.png'),
+        src: join(__dirname, `../assets/emojione-${EMOJIONE_VERSION}-32x32`),
+        out: join(__dirname, `../assets/sprites/emojione-${EMOJIONE_VERSION}-32x32.png`),
     },
     {
         size: 64,
         padding: 1,
-        src: join(__dirname, '../assets/emojione-3.0-64x64'),
-        out: join(__dirname, '../assets/sprites/emojione-3.0-64x64.png'),
+        src: join(__dirname, `../assets/emojione-${EMOJIONE_VERSION}-64x64`),
+        out: join(__dirname, `../assets/sprites/emojione-${EMOJIONE_VERSION}-64x64.png`),
     },
     // {
     //     size: 128,
     //     padding: 1,
-    //     src: join(__dirname, '../assets/emojione-3.0-128x128'),
-    //     out: join(__dirname, '../assets/sprites/emojione-3.0-128x128.png'),
+    //     src: join(__dirname,`'../assets/emojione-${EMOJIONE_VERSION}-128x128`),
+    //     out: join(__dirname,`'../assets/sprites/emojione-${EMOJIONE_VERSION}-128x128.png`),
     // },
 ];
 
-const emojiDataMap = new Map(emojiDataArray.map(([code,, name]) => [name, code]));
+const emojiDataMap = new Map(emojiDataArray.map(([code, name]) => [name, code]));
 
 // get shortnames
 const shortnames = [];
@@ -37,19 +38,20 @@ Object.keys(emojiShortnames)
     .forEach(family => shortnames.push(...emojiShortnames[family]));
 
 const readEmoji = (src, code) => {
+    const filename = code.split('-').filter(c => !['200d', 'fe0f'].includes(c)).join('-');
     let img = new Canvas.Image();
     try {
-        img.src = readFileSync(join(src, `${code}.png`));
+        img.src = readFileSync(join(src, `${filename}.png`));
     } catch (e) {
         img = null;
-        console.error('error loading:', code);
+        console.error('error loading:', filename);
     }
     return img;
 };
 
 const createSprite = ({size, src, out, padding}) => {
-    const width = EMOJIS_PER_ROW * (size + 1) - 1;
-    const height = Math.ceil(emojiDataMap.size / EMOJIS_PER_ROW) * (size + 1) - 1;
+    const width = EMOJIS_PER_ROW * (size + 1);
+    const height = Math.ceil(emojiDataMap.size / EMOJIS_PER_ROW) * (size + 1);
     const count = shortnames.length;
     const canvas = new Canvas(width, height);
     const ctx = canvas.getContext('2d');
@@ -68,15 +70,17 @@ const createSprite = ({size, src, out, padding}) => {
     }
 
     console.log('Writing sprite', out);
-//    writeFileSync(out, canvas.toBuffer());
+    writeFileSync(out, canvas.toBuffer());
+};
 
+const createSpritePositions = () => {
     // sprite positions
     let x = 0, y = 0, e = 0;
     const positions = {};
-    while (e < count) {
+    while (e < shortnames.length) {
         positions[emojiDataMap.get(shortnames[e])] = [x, y];
         x++;
-        if (x > EMOJIS_PER_ROW) {
+        if (x >= EMOJIS_PER_ROW) {
             y++;
             x = 0;
         }
@@ -93,3 +97,4 @@ export default `;
 };
 
 sets.forEach(createSprite);
+createSpritePositions();

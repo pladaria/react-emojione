@@ -1,7 +1,7 @@
 import 'babel-es6-polyfill/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import shortnames from 'emoji-shortnames';
+import shortnames from '../src/data/emoji-shortnames';
 import Emojify, {emojify} from '../src/react-emojione';
 
 const style = {
@@ -14,20 +14,17 @@ const style = {
 
 class Playground extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            input: 'Hello world! 😍😎😏:smile_cat::family:\n'
-                + ":) :P ;P :d T____T ':( -_- -__-u\n"
-                + "xD X'D </3 <3 <\\3 :( >:(\n"
-                + "':[ :, ':| >:[\n"
-                + "¬¬ :, ':| -____-u :unicorn: :poop: :alien:"
-        };
-    }
+    state = { // eslint-disable-line
+        input: 'Hello world! 😍😎😏:smile_cat::family:\n'
+            + ":) :P ;P :d T____T ':( -_- -__-u\n"
+            + 'xD XDD XDDD </3 <3 <\\3 :( >:(\n'
+            + "':[ ':| >:[\n"
+            + "¬¬ ':| -____-u :unicorn: :poop: :alien:"
+    };
 
-    handleChange(event) {
+    handleChange = (event) => { // eslint-disable-line
         this.setState({input: event.target.value});
-    }
+    };
 
     render() {
         return (
