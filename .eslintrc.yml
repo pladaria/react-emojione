@@ -1,10 +1,12 @@
 ---
+parser: babel-eslint
 extends:
   - eslint:recommended
   - plugin:import/recommended
 plugins:
   - react
   - import
+  - class-property
 env:
   es6: true
   browser: true
@@ -136,4 +138,5 @@ rules:
   react/react-in-jsx-scope: 1
   react/self-closing-comp: 1
   react/sort-comp: 1
+  class-property/rule-name: off
 ...

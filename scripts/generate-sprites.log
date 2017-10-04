@@ -1,0 +1,76 @@
+++ dirname ./scripts/generate-sprites.sh
++ cd ./scripts/../assets/sprites
++ rm -f emojione-3.0-32x32-or8.png emojione-3.0-32x32.png emojione-3.0-64x64-or8.png emojione-3.0-64x64.png
++ node ../../scripts/create-sprites.js
+Writing sprite /home/pladaria/projects/react-emojione/assets/sprites/emojione-3.0-32x32.png
+Writing sprite /home/pladaria/projects/react-emojione/assets/sprites/emojione-3.0-64x64.png
+Writing sprite positions /home/pladaria/projects/react-emojione/src/styles/emojione-sprite-positions.js
++ pngquant --force --speed 1 --nofs --verbose emojione-3.0-32x32.png emojione-3.0-64x64.png
+emojione-3.0-32x32.png:
+  read 2745KB file
+  made histogram...146935 colors found
+  selecting colors...3%
+  selecting colors...5%
+  selecting colors...18%
+  selecting colors...20%
+  selecting colors...32%
+  selecting colors...45%
+  selecting colors...58%
+  selecting colors...71%
+  selecting colors...83%
+  selecting colors...96%
+  selecting colors...100%
+  moving colormap towards local minimum
+  eliminated opaque tRNS-chunk entries...148 entries transparent
+  mapped image to new colors...MSE=27.958 (Q=27)
+  writing 256-color image as emojione-3.0-32x32-or8.png
+emojione-3.0-64x64.png:
+  conserving memory
+  read 6882KB file
+  made histogram...189431 colors found
+  selecting colors...3%
+  selecting colors...5%
+  selecting colors...18%
+  selecting colors...30%
+  selecting colors...43%
+  selecting colors...56%
+  selecting colors...58%
+  selecting colors...71%
+  selecting colors...83%
+  selecting colors...96%
+  selecting colors...100%
+  moving colormap towards local minimum
+  eliminated opaque tRNS-chunk entries...114 entries transparent
+  mapped image to new colors...MSE=18.015 (Q=48)
+  writing 256-color image as emojione-3.0-64x64-or8.png
+No errors detected while quantizing 2 images.
++ ls -la
+total 11736
+drwxrwxr-x 2 pladaria pladaria    4096 oct  4 11:42 .
+drwxrwxr-x 6 pladaria pladaria    4096 oct  4 08:19 ..
+-rw-rw-r-- 1 pladaria pladaria  629673 oct  4 11:42 emojione-3.0-32x32-or8.png
+-rw-rw-r-- 1 pladaria pladaria 2810370 oct  4 11:41 emojione-3.0-32x32.png
+-rw-rw-r-- 1 pladaria pladaria 1513342 oct  4 11:42 emojione-3.0-64x64-or8.png
+-rw-rw-r-- 1 pladaria pladaria 7046412 oct  4 11:42 emojione-3.0-64x64.png
++ zopflipng -y -m --iterations=500 --lossy_8bit --filters=01234mepb --lossy_transparent emojione-3.0-32x32-or8.png emojione-3.0-32x32.png
+Optimizing emojione-3.0-32x32-or8.png
+Input size: 629673 (614K)
+Result size: 594337 (580K). Percentage of original: 94.388%
+Result is smaller
+
++ zopflipng -y -m --iterations=500 --lossy_8bit --filters=01234mepb --lossy_transparent emojione-3.0-64x64-or8.png emojione-3.0-64x64.png
+Optimizing emojione-3.0-64x64-or8.png
+Input size: 1513342 (1477K)
+Result size: 1409080 (1376K). Percentage of original: 93.110%
+Result is smaller
+
++ ls -la
+total 4068
+drwxrwxr-x 2 pladaria pladaria    4096 oct  4 11:42 .
+drwxrwxr-x 6 pladaria pladaria    4096 oct  4 08:19 ..
+-rw-rw-r-- 1 pladaria pladaria  629673 oct  4 11:42 emojione-3.0-32x32-or8.png
+-rw-rw-r-- 1 pladaria pladaria  594337 oct  4 12:22 emojione-3.0-32x32.png
+-rw-rw-r-- 1 pladaria pladaria 1513342 oct  4 11:42 emojione-3.0-64x64-or8.png
+-rw-rw-r-- 1 pladaria pladaria 1409080 oct  4 15:56 emojione-3.0-64x64.png
++ rm -f '*.-or8.png'
+Done in 15258.12s.

@@ -1,6 +1,6 @@
 import positions from './emojione-sprite-positions';
 
-const SPRITE_SIZE = 2794;
+const SPRITE_WIDTH = 4160;
 const EMOJI_SIZE = 64;
 
 const base = {
@@ -15,7 +15,7 @@ const base = {
     margin: '0 .15em',
     lineHeight: 'normal',
     verticalAlign: 'middle',
-    backgroundImage: 'url("https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/sprites/emojione.sprites.png")',
+    backgroundImage: 'url("https://github.com/pladaria/react-emojione/blob/emojione3/assets/sprites/emojione-3.1.2-64x64.png?raw=true")',
     backgroundRepeat: 'no-repeat',
 };
 
@@ -28,12 +28,13 @@ export const sprite = (codepoint, style = {}) => {
     result.width = size;
 
     const scale = size / EMOJI_SIZE;
-    const [left, top] = positions[codepoint];
+    const [x, y] = positions[codepoint] || [];
+    const left = x * EMOJI_SIZE + x;
+    const top = y * EMOJI_SIZE + y;
 
-    result.backgroundPosition = `${left * scale}px ${top * scale}px`;
+    result.backgroundPosition = `-${left * scale}px -${top * scale}px`;
 
-    const bgSize = SPRITE_SIZE * scale;
-    result.backgroundSize = `${bgSize}px ${bgSize}px`;
+    result.backgroundSize = `${SPRITE_WIDTH * scale}px`;
 
     return result;
 };
