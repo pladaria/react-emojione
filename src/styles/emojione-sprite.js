@@ -15,7 +15,7 @@ const base = {
     margin: '0 .15em',
     lineHeight: 'normal',
     verticalAlign: 'middle',
-    backgroundImage: 'url("https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/sprites/emojione.sprites.png")',
+    backgroundImage: 'url("https://raw.githubusercontent.com/pladaria/react-emojione/emojione3/assets/sprites/emojione-3.0-64x64.png")',
     backgroundRepeat: 'no-repeat',
 };
 
