@@ -1,12 +1,12 @@
 {
   "name": "react-emojione",
-  "version": "4.0.0",
+  "version": "4.0.0-rc1",
   "description": "A tiny library to use emojis in React",
   "main": "index.js",
   "dependencies": {},
   "peerDependencies": {
-    "react": "14|15|16",
-    "react-dom": "14|15|16"
+    "react": "^15||^16",
+    "react-dom": "^15||^16"
   },
   "devDependencies": {
     "babel-cli": "^6.3.15",
