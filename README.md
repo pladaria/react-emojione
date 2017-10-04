@@ -1,14 +1,15 @@
 <p align="center">
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f638.svg" width=210 />
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f602.svg" width=210 />
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f40a.svg" width=210 />
-    <img src="http://cdn.jsdelivr.net/emojione/assets/svg/1f916.svg" width=210 />
+    <img src="https://api.emojione.com/emoji/1f63b/download/128" width=64 />
+    <img src="https://api.emojione.com/emoji/1f602/download/128" width=64 />
+    <img src="https://api.emojione.com/emoji/1f9d9-2642/download/128" width=64 />
+    <img src="https://api.emojione.com/emoji/1f9dc-2640/download/128" width=64 />
     <h1 align="center">react-emojione</h1>
     <p align="center">A tiny library to use emojis in React</p>
 </p>
 
 ## Features
 
+- Updated to emojione v3.1.2
 - Dependency free!
 - Can be used as function: `emojify()` or component: `<Emojify>`
 - Converts :shortnames:, unicode and ASCII smileys
