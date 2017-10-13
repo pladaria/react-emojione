@@ -52,7 +52,7 @@ const convertAsciiToUnicodeOrNull = text => {
 
 const asciiRegexStr = ASCII_DATA.map(([reStr, ]) => reStr).join('|');
 const unicodesRegexStr = unicodes.map(escapeRegExp).join('|');
-const shortnamesRegexStr = ':\\w+:';
+const shortnamesRegexStr = ':[+-\\d\\w]+:';
 
 const REGEX_CACHE = [];
 

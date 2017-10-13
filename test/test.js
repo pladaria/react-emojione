@@ -4,80 +4,89 @@ const ReactDOMServer = require('react-dom/server');
 const Emojify = require('..').default;
 const emojify = require('..').emojify;
 
+test('shortnames', t => {
+    t.test('shortname alternates', t => {
+        const result = emojify(':+1: :thumbsup:', { output: 'unicode' });
+        const expected = '👍 👍';
+        t.equals(result, expected, result);
+        t.end();
+    });
+});
+
 test('ascii to unicode', t => {
 
     t.test('happy case', t => {
-        const result = emojify(';)', {output: 'unicode'});
+        const result = emojify(';)', { output: 'unicode' });
         const expected = '😉';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('ignored if not surrounded by spaces or start/end of line', t => {
-        const result = emojify('a;)b', {output: 'unicode'});
+        const result = emojify('a;)b', { output: 'unicode' });
         const expected = 'a;)b';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('end of line', t => {
-        const result = emojify('abc ;)', {output: 'unicode'});
+        const result = emojify('abc ;)', { output: 'unicode' });
         const expected = 'abc 😉';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('start of line', t => {
-        const result = emojify(';) abc', {output: 'unicode'});
+        const result = emojify(';) abc', { output: 'unicode' });
         const expected = '😉 abc';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('end of line without space', t => {
-        const result = emojify('abc;)', {output: 'unicode'});
+        const result = emojify('abc;)', { output: 'unicode' });
         const expected = 'abc;)';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('start of line without space', t => {
-        const result = emojify(';)abc', {output: 'unicode'});
+        const result = emojify(';)abc', { output: 'unicode' });
         const expected = ';)abc';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('xD', t => {
-        const result = emojify('xD', {output: 'unicode'});
+        const result = emojify('xD', { output: 'unicode' });
         const expected = '😆';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('XD', t => {
-        const result = emojify('XD', {output: 'unicode'});
+        const result = emojify('XD', { output: 'unicode' });
         const expected = '😆';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('xDD', t => {
-        const result = emojify('xDD', {output: 'unicode'});
+        const result = emojify('xDD', { output: 'unicode' });
         const expected = '😂';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('XDD', t => {
-        const result = emojify('XDD', {output: 'unicode'});
+        const result = emojify('XDD', { output: 'unicode' });
         const expected = '😂';
         t.equals(result, expected, result);
         t.end();
     });
 
     t.test('<3 </3', t => {
-        const result = emojify('<3 </3', {output: 'unicode'});
+        const result = emojify('<3 </3', { output: 'unicode' });
         const expected = '❤️ 💔';
         t.equals(result, expected, result);
         t.end();

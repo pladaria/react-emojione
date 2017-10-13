@@ -8,7 +8,7 @@ export const unicodeToCodepoint = new Map();
 
 EMOJI_DATA.forEach(([codepoint, shortnames, unicode]) => {
     unicodes.push(unicode);
-    shortnames.forEach(shortname => {
+    shortnames.slice().reverse().forEach(shortname => {
         codepointToShort.set(codepoint, shortname);
         shortToCodepoint.set(shortname, codepoint);
     });
