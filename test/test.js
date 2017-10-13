@@ -81,7 +81,7 @@ test('ascii to unicode', t => {
 test('component', t => {
 
     const stripStyle = s =>
-        s.replace(/\sstyle=".*?;"/g, '');
+        s.replace(/\sstyle=".*?"/g, '');
 
     t.test('no children', t => {
         const el = React.createElement(Emojify, {});
