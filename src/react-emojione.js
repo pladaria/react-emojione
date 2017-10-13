@@ -131,7 +131,7 @@ class Emojify extends React.Component {
     render() {
         const children = this.props.children;
         return React.Children.count(children)
-            ? React.createElement('span', {}, this.traverse(children, this.props))
+            ? this.traverse(children, this.props)
             : null;
     }
 }
