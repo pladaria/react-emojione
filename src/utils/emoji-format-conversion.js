@@ -6,10 +6,12 @@ export const shortToCodepoint = new Map();
 export const codepointToUnicode = new Map();
 export const unicodeToCodepoint = new Map();
 
-EMOJI_DATA.forEach(([codepoint, shortname, unicode]) => {
+EMOJI_DATA.forEach(([codepoint, shortnames, unicode]) => {
     unicodes.push(unicode);
-    codepointToShort.set(codepoint, shortname);
-    shortToCodepoint.set(shortname, codepoint);
+    shortnames.forEach(shortname => {
+        codepointToShort.set(codepoint, shortname);
+        shortToCodepoint.set(shortname, codepoint);
+    });
     codepointToUnicode.set(codepoint, unicode);
     unicodeToCodepoint.set(unicode, codepoint);
 });
