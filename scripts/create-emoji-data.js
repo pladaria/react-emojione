@@ -11,11 +11,14 @@ const COMMENT = `/*eslint-disable*/
 
 const items = Object.keys(data).map(key => {
     const emoji = data[key];
-    //console.error(emoji);
+    const shortnames = emoji.shortname_alternates
+        .filter(s => !s.endsWith('skin_tone:') && !s.match(/_tone\d:$/));
+    shortnames.unshift(emoji.shortname);
+    console.error(shortnames);
     const codepoint = emoji.code_points.output;
     return {
         codepoint,
-        short: emoji.shortname,
+        short: shortnames,
         unicode: String.fromCodePoint(...codepoint.split('-').map(c => parseInt(c, 16))),
     };
 });
