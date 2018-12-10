@@ -1,72 +1,72 @@
 {
-  "name": "react-emojione",
-  "version": "5.0.0",
-  "description": "A tiny library to use emojis in React",
-  "main": "index.js",
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "^16",
-    "react-dom": "^16"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.3.15",
-    "babel-core": "^6.1.2",
-    "babel-es6-polyfill": "^1.0.1",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-es2015": "^6.1.2",
-    "babel-preset-react": "^6.1.2",
-    "emoji-shortnames": "^3.0.0",
-    "emojione": "^3.0.0",
-    "eslint": "^4.8.0",
-    "eslint-plugin-class-property": "^1.0.6",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^7.4.0",
-    "jsx-loader": "^0.13.2",
-    "react": "^16",
-    "react-dom": "^16",
-    "rimraf": "^2.4.4",
-    "tape": "^4.5.1",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.4.2",
-    "canvas": "^1.6.5"
-  },
-  "files": [
-    "lib",
-    "assets",
-    "scripts"
-  ],
-  "scripts": {
-    "create-emoji-data": "./scripts/create-emoji-data.js > src/data/emoji-data.js",
-    "create-sprites": "./scripts/generate-sprites.sh",
-    "create-shortnames": "./scripts/create-emoji-shortnames.js",
-    "start": "webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
-    "clean": "rimraf lib",
-    "build": "yarn lint && babel src --out-dir lib",
-    "prepublish": "yarn run clean && yarn run build && yarn test",
-    "test": "node test/test.js",
-    "lint": "eslint src"
-  },
-  "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pladaria/react-emojione.git"
-  },
-  "keywords": [
-    "react",
-    "emoji",
-    "emojione",
-    "emojify",
-    "unicode",
-    "smileys"
-  ],
-  "bugs": {
-    "url": "https://github.com/pladaria/react-emojione/issues"
-  },
-  "homepage": "https://github.com/pladaria/react-emojione#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  }
+    "name": "react-emojione",
+    "version": "5.0.0",
+    "description": "A tiny library to use emojis in React",
+    "main": "index.js",
+    "dependencies": {},
+    "peerDependencies": {
+        "react": "^16",
+        "react-dom": "^16"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.3.15",
+        "babel-core": "^6.1.2",
+        "babel-es6-polyfill": "^1.0.1",
+        "babel-eslint": "^8.0.1",
+        "babel-loader": "^7.1.2",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "babel-preset-es2015": "^6.1.2",
+        "babel-preset-react": "^6.1.2",
+        "emoji-shortnames": "^3.0.0",
+        "emojione": "^3.0.0",
+        "eslint": "^4.8.0",
+        "eslint-plugin-class-property": "^1.0.6",
+        "eslint-plugin-import": "^2.2.0",
+        "eslint-plugin-react": "^7.4.0",
+        "jsx-loader": "^0.13.2",
+        "react": "^16",
+        "react-dom": "^16",
+        "rimraf": "^2.4.4",
+        "tape": "^4.5.1",
+        "webpack": "^3.6.0",
+        "webpack-dev-server": "^2.4.2",
+        "canvas": "^1.6.5"
+    },
+    "files": [
+        "lib",
+        "assets",
+        "scripts"
+    ],
+    "scripts": {
+        "create-emoji-data": "./scripts/create-emoji-data.js > src/data/emoji-data.js",
+        "create-sprites": "./scripts/generate-sprites.sh",
+        "create-shortnames": "./scripts/create-emoji-shortnames.js",
+        "start": "webpack-dev-server --inline --content-base demo/ --config ./webpack.config.js",
+        "clean": "rimraf lib",
+        "build": "yarn lint && babel src --out-dir lib",
+        "prepublishOnly": "yarn run clean && yarn run build && yarn test",
+        "test": "node test/test.js",
+        "lint": "eslint src"
+    },
+    "author": "Pedro Ladaria <pedro.ladaria@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pladaria/react-emojione.git"
+    },
+    "keywords": [
+        "react",
+        "emoji",
+        "emojione",
+        "emojify",
+        "unicode",
+        "smileys"
+    ],
+    "bugs": {
+        "url": "https://github.com/pladaria/react-emojione/issues"
+    },
+    "homepage": "https://github.com/pladaria/react-emojione#readme",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    }
 }

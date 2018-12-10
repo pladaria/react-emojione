@@ -1,6 +1,7 @@
 import positions from './emojione-sprite-positions';
 
 const SPRITE_WIDTH = 4160;
+const SPRITE_HEIGHT = 2730;
 const EMOJI_SIZE = 64;
 
 const base = {
@@ -15,8 +16,9 @@ const base = {
     margin: '0 .15em',
     lineHeight: 'normal',
     verticalAlign: 'middle',
-    backgroundImage: 'url("https://github.com/pladaria/react-emojione/blob/emojione3/assets/sprites/emojione-3.1.2-64x64.png?raw=true")',
-    backgroundRepeat: 'no-repeat',
+    backgroundImage:
+        'url("https://github.com/pladaria/react-emojione/blob/emojione3/assets/sprites/emojione-3.1.2-64x64.png?raw=true")',
+    backgroundRepeat: 'no-repeat'
 };
 
 export const sprite = (codepoint, style = {}) => {
@@ -34,7 +36,9 @@ export const sprite = (codepoint, style = {}) => {
 
     result.backgroundPosition = `-${left * scale}px -${top * scale}px`;
 
-    result.backgroundSize = `${SPRITE_WIDTH * scale}px`;
+    const w = SPRITE_WIDTH * scale;
+    const h = SPRITE_HEIGHT * scale;
+    result.backgroundSize = `${w}px ${h}px`;
 
     return result;
 };
